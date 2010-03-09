@@ -11,3 +11,7 @@ a {
 a:hover {
     color: #0095FF;
 }
+
+li {
+    vertical-align: text-top;
+}
