@@ -1,3 +1,377 @@
-li {
-    vertical-align: text-top;
+body {
+  margin: 0; 
+  padding: 0;
+  background:#333;
+  font-family: Helvetica, sans-serif;
+  color:#333;
+  text-shadow: -1px 1px rgba(255,255,255,0.8);
 }
+
+a {
+	color:#0070c3;
+	text-shadow:none;
+}
+
+a:hover {
+	color:#33a3f6;
+}
+
+
+h2 {
+	position: relative;
+	margin: 0;
+	font-size:30px;
+	letter-spacing: -2px;
+	color:#444;
+}
+
+h2 small {
+	display:block;
+	position: absolute;
+	right:0; 
+	top:0;
+}
+
+
+.box {
+	margin: 20px 0 40px 0;
+	
+	background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0.39, rgba(255,255,255,0.8)),
+    color-stop(0.67, rgba(240,240,240, 0.8))
+  ) rgba(240, 240, 240, 0.8);
+	
+	background: -moz-linear-gradient(
+    center top,
+    rgba(255,255,255, 0.8) 39%,
+    rgba(240,240,240, 0.8) 67%
+  ) rgba(240, 240, 240, 0.8);
+	
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	
+	-moz-box-shadow: 0 3px 5px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 3px 5px rgba(0,0,0,.4);
+	border-radius: 0 3px 5px rgba(0,0,0,.4);
+}
+
+
+.box.title {
+	min-height: 50px;
+}
+
+.box.title img {
+	height:50px;
+	display:block;
+	float: left;
+	margin-right: 20px;
+}
+
+
+.box.title h2 {
+	margin:21px 0 0 0;
+	padding:0;
+}
+
+.box-content {
+	padding:30px;
+	border: 1px solid rgba(255,255, 255, 0.8);
+	
+	-moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
+
+.box.title .box-content {
+	padding: 20px;
+}
+
+
+.project {
+	-moz-border-radius: 8px;
+	-webkit-border-radius: 8px;
+	border-radius: 8px;
+	
+	padding: 20px;
+	
+	-moz-box-shadow: inset 0px 2px 3px rgba(0,0,0,.45);
+	-webkit-box-shadow: inset 0px 2px 3px rgba(0,0,0,.45);
+	
+	border:1px solid rgba(0,0,0,.2);
+	font-size: 14px;
+	height: 80px;
+	margin-bottom: 20px;
+	background-color:rgba(0,0,0,.08);
+}
+
+
+.project h3 {
+	position: relative;
+	margin:5px 0 12px;
+	padding:0;
+	font-size: 20px;
+}
+
+.project h3 small {
+	display:block;
+	position: absolute;
+	right: 0;
+	top: -5px;
+}
+
+ hr {
+	border: none;
+	background: transparent;
+	border-top: 1px solid rgba(0,0,0,.2);
+	border-bottom: 1px solid rgba(255,255,255, 0.8);	
+}
+
+
+.team-member {
+	float:left;
+	margin-right: 10px;
+	width: 150px;
+}
+
+
+.team-member h5 {
+	color: #333;
+	margin:10px 0;
+	padding:0;
+	text-align:center;
+}
+
+.team-member h5 a {
+	display:block;
+}
+
+.team-member a img {
+	background:rgba(255,255,255,0.5);
+	display:block;
+	padding:5px;
+	border: 1px solid #ccc;
+	-moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+	-webkit-box-shadow:  0 2px 3px rgba(0,0,0,.4);
+}
+
+/* --------------------------------- 
+  CSS3 Buttons
+  Usage: <a href="..." class="<size> <color> button"><span>...</span></a>
+  Example: <a href="#" class="large blue button"><span>Hello World</span></a>
+------------------------------------ */
+
+.button { 
+  display:inline-block;
+  padding:0;
+  color:white;
+  text-decoration:none;
+  font-weight:bold;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  -moz-box-shadow:0 1px 3px rgba(0,0,0,0.4);
+  -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.4);
+  box-shadow:0 1px 3px rgba(0,0,0,0.4);
+  text-shadow:rgba(0,0,0,0.6) 0 -1px 1px;
+  border:rgba(0,0,0,0.2) solid 1px;
+  cursor:pointer;
+  outline:none;
+  font-family:Arial,sans-serif;
+  overflow:hidden;
+}
+
+.button span {
+  padding:5px 18px 6px 18px;
+  display:block;
+  color:white;
+  border-top:1px solid rgba(255,255,255,0.3);
+  border-left:1px solid rgba(255,255,255,0.15);
+  border-right:1px solid rgba(255,255,255,0.15);
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  -moz-box-shadow:inset 0 15px 5px rgba(255,255,255,0.1),inset 0 -10px 12px rgba(0,0,0,0.2);
+  box-shadow:inset 0 15px 5px rgba(255,255,255,0.1),inset 0 -10px 12px rgba(0,0,0,0.2);
+  background-image:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(255,255,255,0.25)),to(rgba(0,0,0,0.25)));
+}
+
+.button:active span,.button.active span {
+  border:rgba(0,0,0,0.25) 1px solid;
+  border-bottom:none;
+  -moz-box-shadow:inset 0 5px 10px rgba(0,0,0,0.4);
+  -webkit-box-shadow:inset 0 5px 10px rgba(0,0,0,0.4);
+  box-sahdow:inset 0 5px 10px rgba(0,0,0,0.4);
+  background-image:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(0,0,0,0.4)),to(rgba(0,0,0,0.1)));
+}
+
+button.button {
+  -moz-box-shadow:inset 0 15px 5px rgba(255,255,255,0.1),inset 0 -10px 12px rgba(0,0,0,0.2);
+  box-shadow:inset 0 15px 5px rgba(255,255,255,0.1),inset 0 -10px 12px rgba(0,0,0,0.2);
+  background-image:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(255,255,255,0.25)),to(rgba(0,0,0,0.25)));
+  background-image:-webkit-gradient(linear,0% 0,0% 100%,from(rgba(255,255,255,0.1)),to(rgba(0,0,0,0.1)));
+}
+
+button.button span {
+  margin-top:-1px;
+  margin-left:-3px;
+  margin-right:-3px;
+  -moz-box-shadow:none;
+  box-shadow:none;
+  -webkit-box-shadow:none;
+}
+
+.button:hover { color:white; }
+.button.inactive{ cursor:default; }
+
+/* Sizes */
+.mega.button      { font-size:30px; margin-top:20px; margin-right:30px; -moz-border-radius:30px; -webkit-border-radius:30px; }
+.mega.button span { -moz-border-radius:30px; -webkit-border-radius:30px; }
+
+.large.button      { font-size:20px; margin-top:20px; margin-right:20px; }
+
+.small.button      { font-size:12px; }
+.small.button span { padding:3px 12px 4px 12px; }
+
+.micro.button      { font-size:12px; }
+.micro.button span { padding:3px 10px 4px 10px; }
+
+
+/* Color */
+.blue.button          { background-color:#0070c3; }
+.blue.button:hover    { background-color:#33a3f6; }
+.blue.button:active   { background-color:#0070c3; }
+
+.green.button         { background-color:#7c9f1f; }
+.green.button:hover   { background-color:#afd252; }
+.green.button:active  { background-color:#7c9f1f; }
+
+.orange.button        { background-color:#ba5c0f; }
+.orange.button:hover  { background-color:#ed8f42; }
+.orange.button:active { background-color:#ba5c0f; }
+
+.red.button           { background-color:#ae1919; }
+.red.button:hover     { background-color:#e14c4c; }
+.red.button:active    { background-color:#ae1919; }
+
+.smoky.button         { background-color:rgba(0,0,0,0.8); }
+.smoky.button:hover   { background-color:#333;}
+.smoky.button:active  { background-color:rgba(0,0,0,0.8);}
+
+.dark-gray.button         { background-color:#333;}
+.dark-gray.button:hover   { background-color:#666;}
+.dark-gray.button:active  { background-color:#333;}
+
+.gray.button        { background-color:#777;}
+.gray.button:hover  { background-color:#aaa;}
+.gray.button:active { background-color:#777;}
+
+.medium-gray.button         { background-color:#454545;}
+.medium-gray.button:hover   { background-color:#787878;}
+.medium-gray.button:active  { background-color:#454545;}
+
+.light-gray.button          { background-color:#777; text-shadow:none; color:#9a9a9a;}
+
+
+/* inset */
+
+.button.inset {
+  background-color: transparent;
+  -moz-box-shadow: none;
+  box-shadow:none;
+  background-image: none;
+  border:none;
+  color:#555;
+
+}
+
+.button.inset span {
+  padding:4px 10px 4px 10px;
+  text-shadow:none;
+  -moz-box-shadow:none;
+  border:none;
+  background-image:none;
+  color: #555;
+}
+
+.button.inset:hover {
+	text-decoration:underline;
+}
+
+.button.inset.active {
+	background-color: #565656;
+	-moz-box-shadow:inset 0 5px 5px rgba(0,0,0,0.5);
+  box-shadow:inset 0 5px 3px rgba(0,0,0,0.5);
+  background-image:none;
+  background-image:none;
+  border:rgba(0,0,0,0.2) solid 1px;
+  border-top: rgba(255,255,255,0.4);
+}
+
+.button.inset.active span {
+	color: #fff;
+}
+
+
+
+/* --------------------------------- 
+  Grid
+  Usage: layout elements into a grid easily
+  Example: <div class="row"><div class="two columns first"></div> <div class="three columns" </div> </div>
+------------------------------------ */
+
+.row  { margin:20px 0 20px 0; }
+.row.centered { margin: 20px auto; width: 1024px; }
+
+.row:after { display:block; clear:both; content:"."; visibility:hidden; height:0;}
+.column,.columns  { margin:0 0 0 20px;padding:0;float:left; }
+.column.first, .columns.first {margin:0;padding:0;float:left;}
+
+
+.quarter        {width:25px;}
+.half           {width:50px;}
+.three-quarters {width:75px;}
+
+.one    {width:100px;}
+.two    {width:200px;}
+.three  {width:300px;}
+.four   {width:400px;}
+.five   {width:500px;}
+.six    {width:600px;}
+.seven  {width:700px;}
+.eight  {width:800px;}
+.nine   {width:900px;}
+.ten    {width:1000px;}
+
+.one-and-a-quarter    {width:125px;}
+.two-and-a-quarter    {width:225px;}
+.three-and-a-quarter  {width:325px;}
+.four-and-a-quarter   {width:425px;}
+.five-and-a-quarter   {width:525px;}
+.six-and-a-quarter    {width:625px;}
+.seven-and-a-quarter  {width:725px;}
+.eight-and-a-quarter  {width:825px;}
+.nine-and-a-quarter   {width:925px;}
+
+.one-and-a-half   {width:150px;}
+.two-and-a-half   {width:250px;}
+.three-and-a-half {width:350px;}
+.four-and-a-half  {width:458px;}
+.five-and-a-half  {width:550px;}
+.six-and-a-half   {width:650px;}
+.seven-and-a-half {width:750px;}
+.eight-and-a-half {width:850px;}
+.nine-and-a-half  {width:950px;}
+
+.one-and-three-quarter    {width:175px;}
+.two-and-three-quarters   {width:275px;}
+.three-and-three-quarters {width:375px;}
+.four-and-three-quarters  {width:475px;}
+.five-and-three-quarters  {width:575px;}
+.six-and-three-quarters   {width:675px;}
+.seven-and-three-quarters {width:775px;}
+.eight-and-three-quarters {width:875px;}
+.nine-and-three-quarters  {width:975px;}
+
+.one-half {width:470px;}
