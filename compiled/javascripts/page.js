@@ -40,8 +40,9 @@
     User = (function() {
       function User() {}
       User.render = function(user) {
-        var html;
-        html = "<div class=\"team-member\">\n  <a href=\"" + user.url + "\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    " + user.name + " \n    <a href=\"" + user.url + "\">" + user.login + "</a>\n  </h5>\n</div>";
+        var html, url;
+        url = "http://github.com/" + user.login;
+        html = "<div class=\"team-member\">\n  <a href=\"" + url + "\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    " + user.name + " \n    <a href=\"" + url + "\">" + user.login + "</a>\n  </h5>\n</div>";
         return $(html);
       };
       return User;

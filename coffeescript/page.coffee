@@ -48,12 +48,13 @@ Templates = (->
   
   class User
     @render: (user) ->
+      url = "http://github.com/#{user.login}"
       html = """
        <div class="team-member">
-         <a href="#{user.url}"><img src="#{user.avatar_url}"></a>
+         <a href="#{url}"><img src="#{user.avatar_url}"></a>
          <h5>
            #{user.name} 
-           <a href="#{user.url}">#{user.login}</a>
+           <a href="#{url}">#{user.login}</a>
          </h5>
        </div>
       """
