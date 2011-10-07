@@ -34,7 +34,7 @@ Templates = (->
           <h3>
             #{repository.name}
             <small>
-              <a href="#{repository.clone_url}" class="small dark-gray button">
+              <a href="#{repository.html_url}" target="_blank" class="small dark-gray button">
                 <span>Source Code &raquo;</span>
               </a>
             </small>
@@ -50,10 +50,10 @@ Templates = (->
     @render: (user) ->
       html = """
        <div class="team-member">
-         <a href="#{user.html_url}"><img src="#{user.avatar_url}"></a>
+         <a href="#{user.url}"><img src="#{user.avatar_url}"></a>
          <h5>
            #{user.name} 
-           <a href="#{user.html_url}">#{user.login}</a>
+           <a href="#{user.url}">#{user.login}</a>
          </h5>
        </div>
       """
@@ -97,6 +97,7 @@ bucket_by_lang = (projects) ->
 
 
 write_projects_to_dom = (projects) ->
+  num_projects = projects.length
   buckets = bucket_by_lang(projects)
   all_projects = $("<div>")
 
@@ -114,6 +115,7 @@ write_projects_to_dom = (projects) ->
     all_projects.append(section)
 
   $("#projects").append(all_projects)
+  $("#projects-title").html("Projects (#{num_projects})")
 
 
 write_team_to_dom = (members) ->

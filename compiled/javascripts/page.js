@@ -32,7 +32,7 @@
       function Project() {}
       Project.render = function(repository) {
         var html;
-        html = "<div class=\"project\">\n  <h3>\n    " + repository.name + "\n    <small>\n      <a href=\"" + repository.clone_url + "\" class=\"small dark-gray button\">\n        <span>Source Code &raquo;</span>\n      </a>\n    </small>\n    </h3>\n  <hr/>\n  <p>" + repository.description + "</p>\n</div>";
+        html = "<div class=\"project\">\n  <h3>\n    " + repository.name + "\n    <small>\n      <a href=\"" + repository.html_url + "\" target=\"_blank\" class=\"small dark-gray button\">\n        <span>Source Code &raquo;</span>\n      </a>\n    </small>\n    </h3>\n  <hr/>\n  <p>" + repository.description + "</p>\n</div>";
         return $(html);
       };
       return Project;
@@ -41,7 +41,7 @@
       function User() {}
       User.render = function(user) {
         var html;
-        html = "<div class=\"team-member\">\n  <a href=\"" + user.html_url + "\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    " + user.name + " \n    <a href=\"" + user.html_url + "\">" + user.login + "</a>\n  </h5>\n</div>";
+        html = "<div class=\"team-member\">\n  <a href=\"" + user.url + "\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    " + user.name + " \n    <a href=\"" + user.url + "\">" + user.login + "</a>\n  </h5>\n</div>";
         return $(html);
       };
       return User;
@@ -75,7 +75,8 @@
     return buckets;
   };
   write_projects_to_dom = function(projects) {
-    var all_projects, buckets, col, i, lang, left, project, right, section, _ref;
+    var all_projects, buckets, col, i, lang, left, num_projects, project, right, section, _ref;
+    num_projects = projects.length;
     buckets = bucket_by_lang(projects);
     all_projects = $("<div>");
     for (lang in buckets) {
@@ -95,7 +96,8 @@
       }
       all_projects.append(section);
     }
-    return $("#projects").append(all_projects);
+    $("#projects").append(all_projects);
+    return $("#projects-title").html("Projects (" + num_projects + ")");
   };
   write_team_to_dom = function(members) {
     var member, team, _i, _len;
