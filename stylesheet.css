@@ -151,6 +151,8 @@ h2 small {
 .team-member a img {
 	background:rgba(255,255,255,0.5);
 	display:block;
+  width: 80px;
+  height: 80px;
 	padding:5px;
 	border: 1px solid #ccc;
 	-moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);

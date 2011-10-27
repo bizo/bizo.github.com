@@ -19,6 +19,11 @@ Github = (->
         callback(response.data)
       )
 
+    @get_watched: (user, callback) ->
+      @get("/users/#{user}/watched", (response) ->
+        callback(response.data)
+      )
+
 
   exports.API = API
   exports
@@ -53,7 +58,6 @@ Templates = (->
        <div class="team-member">
          <a href="#{url}"><img src="#{user.avatar_url}"></a>
          <h5>
-           #{user.name} 
            <a href="#{url}">#{user.login}</a>
          </h5>
        </div>
@@ -132,24 +136,11 @@ write_team_to_dom = (members) ->
 init = ->
   api = Github.API
 
+  api.get_watched "bizo", (repos) ->
+    write_projects_to_dom(repos)
+
   api.get_members "bizo", (members) ->
-     requests = members.length
-     projects = []
-
      write_team_to_dom(members)
-
-     for member in members
-      api.get_repos(member.login, (repos) ->
-        requests -= 1
-
-        for user_repo in repos
-          projects.push(user_repo) if user_repo?
-
-        # only write when everything is returned
-        if requests == 0
-          write_projects_to_dom(projects) 
-      )
-      
 
 $(document).ready(init)
   
