@@ -1,4 +1,4 @@
-var Github, Templates, find_project_section, init, project_html, sort_project_name, write_projects_to_dom, write_team_to_dom;
+var Github, Templates, find_project_section, init, project_html, sort_project_member, sort_project_name, string_sort, write_projects_to_dom, write_team_to_dom;
 
 Github = (function() {
   var API, exports;
@@ -109,14 +109,25 @@ find_project_section = function(project) {
   return null;
 };
 
-sort_project_name = function(p1, p2) {
-  if (p1.name < p2.name) {
+string_sort = function(_s1, _s2) {
+  var s1, s2;
+  s1 = _s1.toLowerCase();
+  s2 = _s2.toLowerCase();
+  if (s1 < s2) {
     return -1;
-  } else if (p1.name > p2.name) {
+  } else if (s1 > s2) {
     return 1;
   } else {
     return 0;
   }
+};
+
+sort_project_name = function(p1, p2) {
+  return string_sort(p1.name, p2.name);
+};
+
+sort_project_member = function(p1, p2) {
+  return string_sort(p1.login, p2.login);
 };
 
 write_projects_to_dom = function(buckets) {
@@ -153,6 +164,7 @@ write_team_to_dom = function(members) {
   team = $("<div>");
   projects = {};
   requests = members.length;
+  members.sort(sort_project_member);
   for (_i = 0, _len = members.length; _i < _len; _i++) {
     member = members[_i];
     team.append(Templates.User.render(member));

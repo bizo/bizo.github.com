@@ -106,14 +106,25 @@ find_project_section = (project) ->
         if (project.html_url == url)
           return section
   return null
+
+
+string_sort = (_s1, _s2)   ->
+  s1 = _s1.toLowerCase()
+  s2 = _s2.toLowerCase()
   
-sort_project_name = (p1, p2) ->
-  if (p1.name < p2.name)
+  if (s1 < s2)
     -1
-  else if (p1.name > p2.name)
+  else if (s1 > s2)
     1
-  else 
+  else
     0
+    
+sort_project_name = (p1, p2) ->
+  string_sort(p1.name, p2.name)
+
+sort_project_member = (p1, p2) ->
+  string_sort(p1.login, p2.login)
+  
 
 write_projects_to_dom = (buckets) ->
   num_projects = 0
@@ -149,6 +160,7 @@ write_team_to_dom = (members) ->
   team = $("<div>")
   projects = {}
   requests = members.length
+  members.sort(sort_project_member)
 
   for member in members
     team.append Templates.User.render(member)
