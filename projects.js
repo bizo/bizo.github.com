@@ -21,6 +21,7 @@ bizo_projects = {
   
   "Web Development" : [
     "https://github.com/stephenh/gwt-mpv",
+    "https://github.com/stephenh/pageobjects",
     "https://github.com/jcarver989/raphy-charts",
     "https://github.com/jcarver989/pretty-pieces.sass",
     "https://github.com/jcarver989/state_machine.js",
@@ -28,6 +29,7 @@ bizo_projects = {
   ],
   
   "Misc" : [
+    "https://github.com/stephenh/joist",
     "https://github.com/stephenh/fakehttp",
     "https://github.com/stephenh/jtty",
     "https://github.com/jcarver989/Bizo-API-Gem",
