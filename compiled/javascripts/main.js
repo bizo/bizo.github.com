@@ -48,12 +48,11 @@ Templates = (function() {
 
     Project.render = function(repository) {
       var html;
-      html = "<div class=\"project\">\n  <h3>\n    " + repository.name + "\n    <small>\n      <a href=\"" + repository.html_url + "\" target=\"_blank\" class=\"small orange button\">\n        <span>Source Code &raquo;</span>\n      </a>";
-      console.log(repository.homepage);
+      html = "<div class=\"project\">\n  <h3>\n    " + repository.name + "\n    <small>";
       if (repository.homepage !== "") {
-        html += "<a href=\"" + repository.homepage + "\" target=\"_blank\" style=\"margin-left: 10px;\" class=\"small blue button\">\n  <span>Docs &raquo;</span>\n</a>";
+        html += "<a href=\"" + repository.homepage + "\" target=\"_blank\" style=\"margin-left: 10px;\" class=\"small green button\">\n  <span>Docs &raquo;</span>\n</a>";
       }
-      html += "    </small>\n    </h3>\n  <hr/>\n  <p>" + repository.description + "</p>\n</div>";
+      html += "      <a href=\"" + repository.html_url + "\" target=\"_blank\" class=\"small blue button\">\n        <span>Source Code &raquo;</span>\n      </a>\n    </small>\n    </h3>\n  <hr/>\n  <p>" + repository.description + "</p>\n</div>";
       return $(html);
     };
 

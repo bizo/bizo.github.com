@@ -39,20 +39,18 @@ Templates = (->
           <h3>
             #{repository.name}
             <small>
-              <a href="#{repository.html_url}" target="_blank" class="small orange button">
-                <span>Source Code &raquo;</span>
-              </a>
       """
-     
-      console.log(repository.homepage)
       if repository.homepage != ""
         html += """
-              <a href="#{repository.homepage}" target="_blank" style="margin-left: 10px;" class="small blue button">
+              <a href="#{repository.homepage}" target="_blank" style="margin-left: 10px;" class="small green button">
                 <span>Docs &raquo;</span>
               </a>
         """
 
       html += """
+              <a href="#{repository.html_url}" target="_blank" class="small blue button">
+                <span>Source Code &raquo;</span>
+              </a>
             </small>
             </h3>
           <hr/>

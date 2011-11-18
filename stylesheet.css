@@ -256,10 +256,6 @@ button.button span {
 .red.button:hover     { background-color:#e14c4c; }
 .red.button:active    { background-color:#ae1919; }
 
-.smoky.button         { background-color:rgba(0,0,0,0.8); }
-.smoky.button:hover   { background-color:#333;}
-.smoky.button:active  { background-color:rgba(0,0,0,0.8);}
-
 .dark-gray.button         { background-color:#333;}
 .dark-gray.button:hover   { background-color:#666;}
 .dark-gray.button:active  { background-color:#333;}
