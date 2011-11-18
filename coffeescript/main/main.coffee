@@ -39,9 +39,20 @@ Templates = (->
           <h3>
             #{repository.name}
             <small>
-              <a href="#{repository.html_url}" target="_blank" class="small dark-gray button">
+              <a href="#{repository.html_url}" target="_blank" class="small orange button">
                 <span>Source Code &raquo;</span>
               </a>
+      """
+     
+      console.log(repository.homepage)
+      if repository.homepage != ""
+        html += """
+              <a href="#{repository.homepage}" target="_blank" style="margin-left: 10px;" class="small blue button">
+                <span>Docs &raquo;</span>
+              </a>
+        """
+
+      html += """
             </small>
             </h3>
           <hr/>
@@ -91,30 +102,43 @@ project_html = (project) ->
   Templates.Project.render(project)
 
 
-bucket_by_lang = (projects) ->
-  buckets = {}
+find_project_section = (project) ->
+  for section, urls of bizo_projects
+    for url in urls
+        if (project.html_url == url)
+          return section
+  return null
+  
+sort_project_name = (p1, p2) ->
+  if (p1.name < p2.name)
+    -1
+  else if (p1.name > p2.name)
+    1
+  else 
+    0
 
-  for project in projects
-    buckets[project.language] ||= []
-    buckets[project.language].push(project)
+write_projects_to_dom = (buckets) ->
+  num_projects = 0
 
-  buckets
-
-
-write_projects_to_dom = (projects) ->
-  num_projects = projects.length
-  buckets = bucket_by_lang(projects)
   all_projects = $("<div>")
+  
+  sections = [];
+  for section, project of buckets
+    sections.push(section);
+  
+  sections.sort()
 
-  for lang, projects of buckets
-    lang = "Misc." if lang == "null" 
-    section = Templates.Section.render(lang)
+  for s in sections
+    projects = buckets[s]
+    projects.sort(sort_project_name)
+    section = Templates.Section.render(s)
     left  = section.find('div.left')
     right = section.find('div.right')
+    num_projects += projects.length
 
     for i in [0..projects.length]
       project = projects[i]
-      col = if i %2 == 0 then right else left
+      col = if i %2 == 0 then left else right
       col.append project_html(project) if project?
 
     all_projects.append(section)
@@ -125,19 +149,29 @@ write_projects_to_dom = (projects) ->
 
 write_team_to_dom = (members) ->
   team = $("<div>")
+  projects = {}
+  requests = members.length
+
   for member in members
     team.append Templates.User.render(member)
 
+    Github.API.get_repos member.login, (repos) ->
+      requests -= 1
+      for repo in repos
+        section = find_project_section(repo)
+        if section?
+          projects[section] ||= []
+          projects[section].push(repo)
 
+      if requests == 0
+        write_projects_to_dom(projects)
+    
   $("#team").append(team.html())
 
 
 
 init = ->
   api = Github.API
-
-  api.get_watched "bizo", (repos) ->
-    write_projects_to_dom(repos)
 
   api.get_members "bizo", (members) ->
      write_team_to_dom(members)
