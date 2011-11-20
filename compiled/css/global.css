@@ -1543,13 +1543,13 @@ hr {
 
 .project {
   font-size: 14px;
-  border-bottom: 1px dashed #cccccc;
-  margin-left: -10px; }
+  margin-left: -10px;
+  border-bottom: 1px solid #cccccc; }
   .project a {
     display: block;
     padding: 10px;
     color: #333333;
-    height: 100px;
+    height: 85px;
     text-decoration: none; }
     .project a:hover {
       background: #f1f8ff; }
@@ -1557,7 +1557,7 @@ hr {
     position: relative;
     margin: 8px 0 0px;
     padding: 0;
-    font-size: 20px;
+    font-size: 22px;
     text-align: left;
     font-weight: normal; }
     .project h4 small {
