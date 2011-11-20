@@ -1475,11 +1475,13 @@ body {
   padding: 0;
   border-top: 4px solid #00a6dd;
   color: #333333;
+  text-rendering: optimizeLegibility;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   font-weight: normal;
   line-height: normal;
-  text-rendering: optimizeLegibility; }
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5), to(white));
+  background-image: -moz-linear-gradient(top, #f5f5f5, white); }
 
 a {
   color: #0070c3; }
