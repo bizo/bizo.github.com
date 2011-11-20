@@ -1510,7 +1510,7 @@ hr {
   margin-top: 30px;
   position: relative; }
   .header img {
-    height: 60px;
+    height: 46px;
     width: auto;
     display: block; }
   .header h2 {
@@ -1527,7 +1527,7 @@ hr {
   margin: 0;
   padding: 0;
   position: absolute;
-  top: 25px;
+  top: 22px;
   right: 0; }
   #menu li {
     float: left;
