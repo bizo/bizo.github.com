@@ -9,7 +9,7 @@ Templates = (function() {
     Project.render = function(repository) {
       var html, url;
       url = repository.homepage || repository.html_url;
-      html = "<div class=\"project\">\n  <a href=\"" + url + "\">\n    <h4>\n      " + repository.name + "\n    </h4>\n    <p>" + (repository.description.substring(0, Math.min(repository.description.length, 80))) + "</p>\n  </a>\n</div>";
+      html = "<div class=\"project\">\n  <a href=\"" + url + "\" target=\"_blank\">\n    <h4>\n      " + repository.name + "\n    </h4>\n    <p>" + (repository.description.substring(0, Math.min(repository.description.length, 80))) + "</p>\n  </a>\n</div>";
       return $(html);
     };
 
@@ -23,7 +23,7 @@ Templates = (function() {
     User.render = function(user) {
       var html, url;
       url = "http://github.com/" + user.login;
-      html = "<div class=\"team-member\">\n  <a href=\"" + url + "\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    <a href=\"" + url + "\">" + user.login + "</a>\n  </h5>\n</div>";
+      html = "<div class=\"team-member\">\n  <a href=\"" + url + "\" target=\"_blank\"><img src=\"" + user.avatar_url + "\"></a>\n  <h5>\n    <a href=\"" + url + "\" target=\"_blank\">" + user.login + "</a>\n  </h5>\n</div>";
       return $(html);
     };
 

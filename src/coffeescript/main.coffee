@@ -6,7 +6,7 @@ Templates = (->
 
       html = """
         <div class="project">
-          <a href="#{url}">
+          <a href="#{url}" target="_blank">
             <h4>
               #{repository.name}
             </h4>
@@ -21,9 +21,9 @@ Templates = (->
       url = "http://github.com/#{user.login}"
       html = """
        <div class="team-member">
-         <a href="#{url}"><img src="#{user.avatar_url}"></a>
+         <a href="#{url}" target="_blank"><img src="#{user.avatar_url}"></a>
          <h5>
-           <a href="#{url}">#{user.login}</a>
+           <a href="#{url}" target="_blank">#{user.login}</a>
          </h5>
        </div>
       """
