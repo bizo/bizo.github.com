@@ -1520,7 +1520,7 @@ hr {
     letter-spacing: -3px;
     font-size: 60px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 30px;
     padding-bottom: 20px;
     font-weight: normal; }
 
@@ -1543,6 +1543,9 @@ hr {
       #menu li a:hover, #menu li a.active {
         border-color: #00a6dd; }
 
+#projects {
+  margin-top: 40px; }
+
 .project {
   font-size: 14px;
   margin-left: -10px;
@@ -1554,7 +1557,7 @@ hr {
     height: 85px;
     text-decoration: none; }
     .project a:hover {
-      background: #f1f8ff; }
+      background: #e3f6ff; }
   .project h4 {
     position: relative;
     margin: 8px 0 0px;
@@ -1571,7 +1574,7 @@ hr {
     font-size: 14px; }
 
 #team {
-  margin: 30px auto 30px; }
+  margin: 30px auto 0; }
 
 .team-member {
   float: left;
