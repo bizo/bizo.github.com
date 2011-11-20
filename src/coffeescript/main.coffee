@@ -1,64 +1,20 @@
-Github = (->
-  exports = {}
-
-  class API 
-    @base_url: "https://api.github.com"
-
-    @get: (path, callback) ->
-      $.getJSON "#{@base_url}#{path}?callback=?", (response) ->
-        callback(response)
-
-    @get_members: (org, callback) ->
-      @get("/orgs/#{org}/public_members", (response) ->
-        callback(response.data)
-      )
-
-    
-    @get_repos: (user, callback) ->
-      @get("/users/#{user}/repos", (response) ->
-        callback(response.data)
-      )
-
-    @get_watched: (user, callback) ->
-      @get("/users/#{user}/watched", (response) ->
-        callback(response.data)
-      )
-
-
-  exports.API = API
-  exports
-)()
-
-
 Templates = (->
 
   class Project
     @render: (repository) ->
+      url = repository.homepage || repository.html_url
+
       html = """
         <div class="project">
-          <h3>
-            #{repository.name}
-            <small>
-      """
-      if repository.homepage != ""
-        html += """
-              <a href="#{repository.homepage}" target="_blank" style="margin-left: 10px;" class="small green button">
-                <span>Docs &raquo;</span>
-              </a>
-        """
-
-      html += """
-              <a href="#{repository.html_url}" target="_blank" class="small blue button">
-                <span>Source Code &raquo;</span>
-              </a>
-            </small>
-            </h3>
-          <hr/>
-          <p>#{repository.description}</p>
+          <a href="#{url}">
+            <h4>
+              #{repository.name}
+            </h4>
+            <p>#{repository.description.substring(0, Math.min(repository.description.length, 80))}</p>
+          </a>
         </div>
       """
       $(html)
-
   
   class User
     @render: (user) ->
@@ -79,11 +35,15 @@ Templates = (->
       <div>
         <h3>#{language_name}</h3>
         <div class="row">
-          <div class="four-and-a-half columns first left">
+          <div class="three columns first col-one">
           </div>
 
-          <div class="four-and-a-half columns right">
+          <div class="three columns col-two">
           </div>
+
+          <div class="three columns col-three">
+          </div>
+        </div>
         </div>
      </div>
       """
@@ -99,61 +59,51 @@ Templates = (->
 project_html = (project) ->
   Templates.Project.render(project)
 
-
 find_project_section = (project) ->
   for section, urls of bizo_projects
     for url in urls
-        if (project.html_url == url)
-          return section
-  return null
+        return section if project.html_url == url
+  null
 
 
-string_sort = (_s1, _s2)   ->
-  s1 = _s1.toLowerCase()
-  s2 = _s2.toLowerCase()
-  
-  if (s1 < s2)
-    -1
-  else if (s1 > s2)
-    1
-  else
-    0
-    
+string_sort = (s1, s2)   ->
+  s1 = s1.toLowerCase()
+  s2 = s2.toLowerCase()
+  return 0 if s1 == s2
+  if s1 > s2 then 1 else -1
+
 sort_project_name = (p1, p2) ->
   string_sort(p1.name, p2.name)
 
 sort_project_member = (p1, p2) ->
   string_sort(p1.login, p2.login)
-  
 
 write_projects_to_dom = (buckets) ->
-  num_projects = 0
-
   all_projects = $("<div>")
-  
-  sections = [];
-  for section, project of buckets
-    sections.push(section);
-  
+  sections = (section for section, project of buckets)
   sections.sort()
 
   for s in sections
     projects = buckets[s]
     projects.sort(sort_project_name)
     section = Templates.Section.render(s)
-    left  = section.find('div.left')
-    right = section.find('div.right')
-    num_projects += projects.length
+    
+    columns = [
+      section.find('div.col-one'),
+      section.find('div.col-two'),
+      section.find('div.col-three')
+    ]
+
+    num_columns = columns.length
 
     for i in [0..projects.length]
       project = projects[i]
-      col = if i %2 == 0 then left else right
+      col = columns[i%num_columns]
       col.append project_html(project) if project?
 
     all_projects.append(section)
 
   $("#projects").append(all_projects)
-  $("#projects-title").html("Projects (#{num_projects})")
 
 
 write_team_to_dom = (members) ->
@@ -177,7 +127,6 @@ write_team_to_dom = (members) ->
         write_projects_to_dom(projects)
     
   $("#team").append(team.html())
-
 
 
 init = ->

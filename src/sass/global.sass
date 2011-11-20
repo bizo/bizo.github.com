@@ -1,0 +1,164 @@
+@import pretty-pieces.sass 
+
+.centered
+    margin: 0 auto
+    text-align: left
+
+.row.centered
+    margin: 0 auto
+    width: 1000px
+
+// General
+// --------------------
+body 
+    margin: 0 
+    padding: 0
+    border-top: 4px solid #00A6DD
+    color: #333
+    +sans-serif()
+    text-rendering: optimizeLegibility
+
+a 
+    color: #0070c3
+    text-shadow:none
+
+    &:hover
+        color: #33a3f6
+
+h2 
+    position: relative
+    margin: 10px 0 10px
+    font-size: 30px
+    letter-spacing: -2px
+    text-align: left
+
+
+    small 
+        display:block
+        position: absolute
+        right: 0 
+        top: 0
+
+h3
+    font-size: 24px
+
+hr 
+    border: none
+    background: transparent
+    border-top: 1px solid rgba(0,0,0,.2)
+    border-bottom: 1px solid rgba(255,255,255, 0.8)
+
+// Header
+// ------------------
+.header
+    margin-top: 30px
+    position: relative 
+
+    img
+        height: 60px
+        width: auto
+        display: block
+    h2
+        color:  #333
+        letter-spacing: -3px
+        font-size: 60px
+        text-align: center
+        margin-top: 40px
+        padding-bottom: 20px
+        font-weight: normal
+
+// Menu
+// ------------------
+
+#menu
+    list-style: none
+    margin: 0
+    padding: 0
+    position: absolute
+    top: 25px 
+    right: 0
+
+    li
+        float: left
+        margin-right: 15px
+        font-size: 18px
+
+        a
+            border-bottom: 3px solid transparent
+            display: block
+            text-decoration: none
+            color: #555
+
+            &:hover, &.active
+                border-color: #00A6DD
+
+// Projects
+// -------------------
+.project 
+    font-size: 14px
+    border-bottom: 1px dashed #ccc
+    margin-left: -10px
+
+    a
+        display: block
+        padding: 10px
+        color: #333
+        height: 100px
+        text-decoration: none
+
+        &:hover
+            background: #F1F8FF
+
+ 
+
+
+
+    h4
+        position: relative
+        margin: 8px 0 0px
+        padding: 0
+        font-size: 20px
+        text-align: left
+        font-weight: normal
+
+
+        small 
+            display:block
+            position: absolute
+            right: 0
+            top: -5px
+
+    p
+        margin: 8px 0 8px 0 
+        font-size: 14px
+
+    
+
+// Team
+// ----------------
+
+#team
+    margin: 30px auto 30px
+
+
+.team-member 
+    float: left
+    margin-right: 10px
+
+    h5 
+        color: #333
+        margin: 10px 0
+        padding: 0
+        text-align: center
+
+    a 
+        display: block
+
+        img 
+            background: rgba(255,255,255,0.5)
+            display: block
+            width: 50px
+            height: 50px
+            padding: 5px
+            border: 1px solid #ccc
+            +box-shadow(0 2px 3px rgba(0,0,0,.4))

@@ -2,45 +2,33 @@
 <html>
   <head>
     <title>Bizo Open Source</title>
-    <link rel="stylesheet" href="stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="compiled/css/global.css" type="text/css">
   </head>
   <body>
     <div class="row centered">
-      <div class="ten columns">
-        <div class="box title">
-          <div class="box-content">
+      <div class="nine-and-a-half columns">
+          <div class="header">
             <img src="bizo_logo.png" />
-            <h2>Open Source Projects</h2>
-            <div style="clear:both;"></div>
+            <ul id="menu">
+                <li><a href="http://dev.bizo.com">Blog</a></li>
+                <li><a href="http://www.bizoneers.com">Careers</a></li>
+            </ul>
+            <h2>Open source projects extracted from crafty, crafty zen monks at Bizo.</h2>
           </div>
-        </div>
 
-        <div class="box">
-          <div class="box-content">
+          <hr />
+          <div id="team" class="seven-and-three-quarters" ></div>
 
-            <div id="team" >
-              <h2>Team</h2>
-              <hr />
-            </div>
+          <div style="clear:both;"></div>
 
-            <div style="clear:both;"></div>
-
-            <div id="projects" >
-              <h2 id="projects-title"></h2>
-              <div class="projects-intro">
-	            Learn about these projects and more at the <a href="http://dev.bizo.com/">bizo development blog</a>.
-	          </div>
-              <hr />
-            </div>
-
-
+          <div id="projects" >
+            <div class="projects-intro"> </div>
           </div>
-        </div>
-      </div>
     </div>
 
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-    <script type="text/javascript" src="projects.js"></script>
+    <script type="text/javascript" src="config/projects.js"></script>
+    <script type="text/javascript" src="https://raw.github.com/jcarver989/GithubApi.js/master/github_api.js"></script>
     <script type="text/javascript" src="compiled/javascripts/main.js"></script>
   </body>
 </html>

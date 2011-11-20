@@ -1,44 +1,4 @@
-var Github, Templates, find_project_section, init, project_html, sort_project_member, sort_project_name, string_sort, write_projects_to_dom, write_team_to_dom;
-
-Github = (function() {
-  var API, exports;
-  exports = {};
-  API = (function() {
-
-    function API() {}
-
-    API.base_url = "https://api.github.com";
-
-    API.get = function(path, callback) {
-      return $.getJSON("" + this.base_url + path + "?callback=?", function(response) {
-        return callback(response);
-      });
-    };
-
-    API.get_members = function(org, callback) {
-      return this.get("/orgs/" + org + "/public_members", function(response) {
-        return callback(response.data);
-      });
-    };
-
-    API.get_repos = function(user, callback) {
-      return this.get("/users/" + user + "/repos", function(response) {
-        return callback(response.data);
-      });
-    };
-
-    API.get_watched = function(user, callback) {
-      return this.get("/users/" + user + "/watched", function(response) {
-        return callback(response.data);
-      });
-    };
-
-    return API;
-
-  })();
-  exports.API = API;
-  return exports;
-})();
+var Templates, find_project_section, init, project_html, sort_project_member, sort_project_name, string_sort, write_projects_to_dom, write_team_to_dom;
 
 Templates = (function() {
   var Project, Section, User, exports;
@@ -47,12 +7,9 @@ Templates = (function() {
     function Project() {}
 
     Project.render = function(repository) {
-      var html;
-      html = "<div class=\"project\">\n  <h3>\n    " + repository.name + "\n    <small>";
-      if (repository.homepage !== "") {
-        html += "<a href=\"" + repository.homepage + "\" target=\"_blank\" style=\"margin-left: 10px;\" class=\"small green button\">\n  <span>Docs &raquo;</span>\n</a>";
-      }
-      html += "      <a href=\"" + repository.html_url + "\" target=\"_blank\" class=\"small blue button\">\n        <span>Source Code &raquo;</span>\n      </a>\n    </small>\n    </h3>\n  <hr/>\n  <p>" + repository.description + "</p>\n</div>";
+      var html, url;
+      url = repository.homepage || repository.html_url;
+      html = "<div class=\"project\">\n  <a href=\"" + url + "\">\n    <h4>\n      " + repository.name + "\n    </h4>\n    <p>" + (repository.description.substring(0, Math.min(repository.description.length, 80))) + "</p>\n  </a>\n</div>";
       return $(html);
     };
 
@@ -79,7 +36,7 @@ Templates = (function() {
 
     Section.render = function(language_name) {
       var html;
-      html = " <div>\n   <h3>" + language_name + "</h3>\n   <div class=\"row\">\n     <div class=\"four-and-a-half columns first left\">\n     </div>\n\n     <div class=\"four-and-a-half columns right\">\n     </div>\n   </div>\n</div>";
+      html = " <div>\n   <h3>" + language_name + "</h3>\n   <div class=\"row\">\n     <div class=\"three columns first col-one\">\n     </div>\n\n     <div class=\"three columns col-two\">\n     </div>\n\n     <div class=\"three columns col-three\">\n     </div>\n   </div>\n   </div>\n</div>";
       return $(html);
     };
 
@@ -109,16 +66,14 @@ find_project_section = function(project) {
   return null;
 };
 
-string_sort = function(_s1, _s2) {
-  var s1, s2;
-  s1 = _s1.toLowerCase();
-  s2 = _s2.toLowerCase();
-  if (s1 < s2) {
-    return -1;
-  } else if (s1 > s2) {
+string_sort = function(s1, s2) {
+  s1 = s1.toLowerCase();
+  s2 = s2.toLowerCase();
+  if (s1 === s2) return 0;
+  if (s1 > s2) {
     return 1;
   } else {
-    return 0;
+    return -1;
   }
 };
 
@@ -131,32 +86,33 @@ sort_project_member = function(p1, p2) {
 };
 
 write_projects_to_dom = function(buckets) {
-  var all_projects, col, i, left, num_projects, project, projects, right, s, section, sections, _i, _len, _ref;
-  num_projects = 0;
+  var all_projects, col, columns, i, num_columns, project, projects, s, section, sections, _i, _len, _ref;
   all_projects = $("<div>");
-  sections = [];
-  for (section in buckets) {
-    project = buckets[section];
-    sections.push(section);
-  }
+  sections = (function() {
+    var _results;
+    _results = [];
+    for (section in buckets) {
+      project = buckets[section];
+      _results.push(section);
+    }
+    return _results;
+  })();
   sections.sort();
   for (_i = 0, _len = sections.length; _i < _len; _i++) {
     s = sections[_i];
     projects = buckets[s];
     projects.sort(sort_project_name);
     section = Templates.Section.render(s);
-    left = section.find('div.left');
-    right = section.find('div.right');
-    num_projects += projects.length;
+    columns = [section.find('div.col-one'), section.find('div.col-two'), section.find('div.col-three')];
+    num_columns = columns.length;
     for (i = 0, _ref = projects.length; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
       project = projects[i];
-      col = i % 2 === 0 ? left : right;
+      col = columns[i % num_columns];
       if (project != null) col.append(project_html(project));
     }
     all_projects.append(section);
   }
-  $("#projects").append(all_projects);
-  return $("#projects-title").html("Projects (" + num_projects + ")");
+  return $("#projects").append(all_projects);
 };
 
 write_team_to_dom = function(members) {

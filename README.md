@@ -4,9 +4,8 @@ Building the Project
 Prereqs
 ============
 
-- Ruby + Rubygems
-- Bundler (gem install bundler)
-- bundle install
+- coffeescript (compiler) 
+- sass (gem)
 
 
 Editing
@@ -19,12 +18,11 @@ Editing
 Building/Compiling
 ============
 
-    # Compile once
-    bundle exec dependence coffeescript -o compiled/javascripts -b
+    # Coffeescript
+    ./build.sh
 
-    # Compile continuously while you edit files
-    bundle exec dependence coffeescript -o compiled/javascripts -b -w
-
+    # Saas
+    sass -w src/sass:compiled/css
 
 
 
