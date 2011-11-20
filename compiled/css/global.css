@@ -1541,7 +1541,8 @@ hr {
       text-decoration: none;
       color: #555555; }
       #menu li a:hover, #menu li a.active {
-        border-color: #00a6dd; }
+        border-color: #00a6dd;
+        color: #00a6dd; }
 
 #projects {
   margin-top: 40px; }
