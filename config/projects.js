@@ -2,9 +2,10 @@ bizo_projects = {
   "AWS Tools/Utilities" : [
     "https://github.com/aboisvert/s3cp",
     "https://github.com/stephenh/s3fsr",
-    "https://github.com/floodfx/sdbtool",
+    "https://github.com/floodfx/aws-tools",
     "https://github.com/ogrodnek/chloe",
-    "https://github.com/stephenh/fakesdb"
+    "https://github.com/stephenh/fakesdb",
+    "https://github.com/floodfx/chrome-sdb"
   ],
   
   "AWS Libraries" : [
