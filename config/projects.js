@@ -7,19 +7,20 @@ bizo_projects = {
     "https://github.com/stephenh/fakesdb",
     "https://github.com/floodfx/chrome-sdb"
   ],
-  
+
   "AWS Libraries" : [
     "https://github.com/aboisvert/simplistic",
+    "https://github.com/aboisvert/pixii",
     "https://github.com/ogrodnek/s3-simple"
   ],
-  
+
   "Hive/EMR" : [
     "https://github.com/ogrodnek/csv-serde",
     "https://github.com/ogrodnek/shmrj",
     "https://github.com/ogrodnek/emr-mailer",
     "https://github.com/balshor/gdata-storagehandler"
   ],
-  
+
   "Web Development" : [
     "https://github.com/stephenh/gwt-mpv",
     "https://github.com/stephenh/pageobjects",
@@ -28,13 +29,14 @@ bizo_projects = {
     "https://github.com/jcarver989/state_machine.js",
     "https://github.com/jcarver989/dependence.js"
   ],
-  
+
   "Misc" : [
     "https://github.com/stephenh/joist",
     "https://github.com/stephenh/fakehttp",
     "https://github.com/stephenh/jtty",
     "https://github.com/jcarver989/Bizo-API-Gem",
     "https://github.com/aboisvert/revolute",
+    "https://github.com/aboisvert/skiis",
     "https://github.com/ogrodnek/stupid-xml"
   ]
 };
