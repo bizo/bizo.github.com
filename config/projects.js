@@ -11,7 +11,8 @@ bizo_projects = {
   "AWS Libraries" : [
     "https://github.com/aboisvert/simplistic",
     "https://github.com/aboisvert/pixii",
-    "https://github.com/ogrodnek/s3-simple"
+    "https://github.com/ogrodnek/s3-simple",
+    "https://github.com/lpryor/squishy"
   ],
 
   "Hive/EMR" : [
