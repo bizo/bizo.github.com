@@ -38,6 +38,7 @@ bizo_projects = {
     "https://github.com/jcarver989/Bizo-API-Gem",
     "https://github.com/aboisvert/revolute",
     "https://github.com/aboisvert/skiis",
-    "https://github.com/ogrodnek/stupid-xml"
+    "https://github.com/ogrodnek/stupid-xml",
+    "https://github.com/lpryor/atmos"
   ]
 };
