@@ -16,6 +16,7 @@ bizo_projects = {
   ],
 
   "Hive/EMR" : [
+    "https://github.com/ogrodnek/spark-plug",
     "https://github.com/ogrodnek/csv-serde",
     "https://github.com/ogrodnek/shmrj",
     "https://github.com/ogrodnek/emr-mailer",
